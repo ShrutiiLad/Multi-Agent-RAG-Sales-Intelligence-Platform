@@ -1,0 +1,229 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Sohne_Buch";
+  src: url("./fonts/soehne-buch.woff2");
+}
+@font-face {
+  font-family: "Sohne_Halbfett";
+  src: url("./fonts/soehne-halbfett.woff2");
+}
+@font-face {
+  font-family: "Sohne_Kraftig";
+  src: url("./fonts/soehne-kraftig.woff2");
+}
+
+@font-face {
+  font-family: "Sohne";
+  src: url("./fonts/soehne-buch.woff2") format("truetype");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Sohne";
+  src: url("./fonts/soehne-kraftig.woff2") format("truetype");
+  font-weight: 500;
+}
+
+@layer base {
+  :root {
+    --background: 255 255% 100%;
+    --foreground: 224 71.4% 4.1%;
+    --delete: red;
+    --selected: #222244;
+    --inactive: rgba(34, 34, 68, 0.75);
+    --supportCol: rgba(34, 34, 68, 0.5);
+    --lightText: rgba(34, 34, 68, 0.4);
+    --selectedBg: #ededf1;
+    --overlay: rgba(34, 34, 68, 0.2);
+    --hover: rgba(256, 256, 256, 0.25);
+    --scrollbar: rgba(34, 34, 68, 0.25);
+    --navbarHoverBg: #2222441f;
+    --lightBackground: rgba(34, 34, 68, 0.08);
+    --veryLightBackground: rgba(34, 34, 68, 0.05);
+    --inputFieldBg: rgba(34, 34, 68, 0.12);
+    --card: 0 0% 100%;
+    --card-foreground: 224 71.4% 4.1%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71.4% 4.1%;
+    --primary: 220.9 39.3% 11%;
+    --primary-foreground: 210 20% 98%;
+    --secondary: 220 14.3% 95.9%;
+    --secondary-foreground: 220.9 39.3% 11%;
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
+    --accent: 220 14.3% 95.9%;
+    --accent-foreground: 220.9 39.3% 11%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 224 71.4% 4.1%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 224 71.4% 4.1%;
+    --foreground: 210 20% 98%;
+    --selected: #222244;
+    --inactive: hsl(0, 0%, 45%);
+    --support: hsl(0, 0%, 52%);
+    --selectedBg: hsl(0, 0%, 95%);
+    --card: 224 71.4% 4.1%;
+    --card-foreground: 210 20% 98%;
+    --popover: 224 71.4% 4.1%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 210 20% 98%;
+    --primary-foreground: 220.9 39.3% 11%;
+    --secondary: 215 27.9% 16.9%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 215 27.9% 16.9%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+    --accent: 215 27.9% 16.9%;
+    --accent-foreground: 210 20% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --ring: 216 12.2% 83.9%;
+  }
+
+  html {
+    font-family: "Sohne", system-ui, "Open Sans", "Helvetica Neue", sans-serif;
+  }
+}
+
+/* Custom Shadow for message input */
+.shadow-custom {
+  box-shadow: rgba(23, 23, 23, 0.09) 0 0 0 1,
+    /* Base shadow */ rgba(23, 23, 23, 0.04) 0 2px 8px 0,
+    /* Outer shadow */ rgba(23, 23, 23, 0.06) 0 4px 16px -2; /* Inner shadow */
+}
+
+.text-75 {
+  text-decoration: #224;
+  opacity: 75%;
+}
+
+.hide-webkit-scrollbar::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
+}
+
+.small-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.small-scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--inputFieldBg); /* Color of the scrollbar thumb */
+  border-radius: 2px; /* Border radius of the thumb */
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px; /* Width of the scrollbar */
+  right: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar); /* Color of the scrollbar thumb */
+  border-radius: 6px; /* Border radius of the thumb */
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent; /* Color of the scrollbar track */
+}
+
+.bg-gradient {
+  background: url("./assets/BackgroundGradient.png") top left no-repeat, #dbdded;
+  background-size: cover;
+}
+
+.light-border {
+  border: 1px solid rgba(34, 34, 68, 0.08);
+}
+
+.medium-border {
+  border: 1px solid rgba(34, 34, 68, 0.24);
+}
+
+.small-text {
+  font-size: 14px;
+  line-height: 14px;
+}
+
+.medium-text {
+  font-size: 18px;
+  line-height: 18px;
+}
+.rounded-10 {
+  border-radius: 10px;
+}
+
+.rounded-6 {
+  border-radius: 6px;
+}
+
+.loader {
+  width: 20px;
+  height: 20px;
+  position: relative;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 5px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #858585; /* Adjust color as needed */
+  border-radius: 50%;
+  animation: spin 1s linear infinite; /* Apply rotation animation */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Big red dot */
+.custom-react-markdown-dot p:last-child::after {
+  content: " ";
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  background-color: var(--supportCol);
+  border-radius: 50%;
+  margin-left: 5px;
+  vertical-align: middle;
+  text-align: center;
+  animation: dotAnimation 1s infinite alternate;
+}
+
+@keyframes dotAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1); /* Scale up */
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.prose
+  :where(thead th):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  text-align: left;
+}
