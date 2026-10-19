@@ -1,0 +1,45 @@
+FROM python:3.11.7
+
+# Set the working directory
+WORKDIR /app
+
+# Keeps Python from generating .pyc files in the container
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+# Install system dependencies and python dependencies
+RUN apt-get update && apt-get install -y \
+    libpq-dev gcc && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Copy and install python dependencies
+COPY requirements.txt /app/
+RUN pip install --upgrade pip && pip install -r requirements.txt
+
+# Copy the application code
+COPY echo_b /app/
+
+# List the files in the /app directory
+RUN ls -la /app
+
+# Add and run as a non-root user
+RUN adduser --uid 5678 --disabled-password --gecos "" appuser && chown -R appuser /app
+USER appuser
+
+# Collect static files
+RUN python manage.py collectstatic --noinput
+
+# Create a directory and file `/home/LogFiles/django.log` for logging
+RUN mkdir -p /tmp/LogFiles
+RUN touch /tmp/LogFiles/django.log
+
+# Run Migrations and create a superuser
+RUN python manage.py migrate
+
+# Expose the port the app runs on
+EXPOSE 8000
+
+# Run the application
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+#CMD ["gunicorn", "--bind", "0.0.0.0:8000", "echo_b.wsgi:application"]

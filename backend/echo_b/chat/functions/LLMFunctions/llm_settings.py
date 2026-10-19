@@ -1,0 +1,1 @@
+DEF_MODEL_FOR_NON_USER_TASK = "gpt-4o"

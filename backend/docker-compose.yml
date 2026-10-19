@@ -1,0 +1,72 @@
+services:
+  application:
+    build:
+      context: .
+      dockerfile: ./DockerFile
+    image: echo_b_application
+    container_name: echo_b_application
+    volumes:
+      - media_data:/app/media/
+    # networks:
+    #   - net
+    # environment:
+    #   DJANGO_SETTINGS_MODULE: "echo_b.settings"
+    #   AZURE_POSTGRESQL_CONNECTIONSTRING: "host=db dbname=${POSTGRES_DB} user=${POSTGRES_USER} password=${POSTGRES_PASSWORD}"
+    #   AZURE_REDIS_CONNECTIONSTRING: "redis://redis:6379/0"
+    #   WEBSITE_HOSTNAME: "localhost"
+    # depends_on:
+    #   db:
+    #     condition: service_healthy
+    #   redis:
+    #     condition: service_healthy
+    #   chroma:
+    #     condition: service_started
+    ports:
+      - "8000:8000"  # Expose port 8301 to the host
+
+  # chroma:
+  #   image: ghcr.io/chroma-core/chroma:latest
+  #   volumes:
+  #     - index_data:/chroma/.chroma/index
+  #   ports:
+  #     - "8001:8000"
+  #   networks:
+  #     - net
+
+  # db:
+  #   image: postgres:15
+  #   restart: always
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data/
+  #   env_file:
+  #     - .env
+  #   networks:
+  #     - net
+  #   healthcheck:
+  #     test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+  #     interval: 30s
+  #     timeout: 10s
+  #     retries: 5
+
+  # redis:
+  #   image: redis:latest
+  #   restart: always
+  #   networks:
+  #     - net
+  #   healthcheck:
+  #     test: ["CMD", "redis-cli", "ping"]
+  #     interval: 30s
+  #     timeout: 10s
+  #     retries: 5
+
+volumes:
+  media_data:
+    driver: local
+  # index_data:
+  #   driver: local
+  # postgres_data:
+  #   driver: local
+
+# networks:
+#   net:
+#     driver: bridge
