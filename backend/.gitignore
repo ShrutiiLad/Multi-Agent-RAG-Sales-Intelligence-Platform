@@ -1,0 +1,42 @@
+# Python
+*.pyc
+*.pyo
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django
+*.log
+*.pot
+*.pyc
+local_settings.py
+db.sqlite3
+media/
+vector_store/
+
+# Virtual environment
+
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+db.sqlite3
+
+
+# IDE
+.idea/
+.vscode/
+/echo_b/openai_embeds
+/.env
+/echo_b/.env
+.\echo_b\db.sqlite3
+echo_b\db.sqlite3
+echo_b\media
+echo_b/chat/functions/demo.json
+/echo_b/openai_embeds/chroma.sqlite3
+/echo_b/vector_store
+/echo_b/vector_store_prev
+/echo_b/db_o.sqlite3
